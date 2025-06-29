@@ -9,7 +9,7 @@ import pickle
 import os
 
 # Define Base Path
-BASE_PATH = r"D:/My_Learning/Projects/project_face_recognition_attendence/classes/"  # Change this to your actual project folder
+BASE_PATH = r"D:/My_Learning/Projects/Git/Face_recognition_attendance_system/classes/"  # Change this to your actual project folder
 
 
 def update_encodings():
@@ -37,7 +37,7 @@ def update_encodings():
         root.update()
 
         for i in range(1, st_number + 1):
-            status_label.config(text=f"Processing encoding for roll number {i}...", fg="blue")
+            status_label.config(text=f"Processing encoding for roll number {i}...", fg="#040531")
             root.update()
             img_path = BASE_PATH + f"{class_name}/faces/{i}.jpg"
             
@@ -66,7 +66,7 @@ def update_encodings():
             missing_text = "✅ Encodings updated successfully! \n ⚠️ Placeholder encoding used for:\n" + "\n".join(missing_students)
             status_label.config(text=missing_text, fg="#f06902")
         else:
-            status_label.config(text="✅ Encodings updated successfully!", fg="green")
+            status_label.config(text="✅ Encodings updated successfully!", fg="#040531")
 
     except Exception as e:
         status_label.config(text=f"❌ Error: {e}", fg="red")
@@ -119,11 +119,11 @@ def take_attendance():
             face_locations = [(top * 2, right * 2, bottom * 2, left * 2) for (top, right, bottom, left) in face_locations]
 
             for face_encoding, (top, right, bottom, left) in zip(face_encodings, face_locations):
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=0.6)  
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=0.4)  
                 face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
                 best_match_index = np.argmin(face_distances)
 
-                if face_distances[best_match_index] < 0.6:  # Set strict threshold to false attendence
+                if face_distances[best_match_index] < 0.4:  # Set strict threshold to false attendence
                     name = known_faces_names[best_match_index]
                     cv2.rectangle(frame, (left, top), (right, bottom), (6, 145, 43), 2)
                     # Calculate text width and height
@@ -162,20 +162,20 @@ def take_attendance():
 root = tk.Tk()
 root.title("Face Recognition Attendance System")
 root.geometry("450x400")
-root.configure(bg="#53bcf5")  # Light background color
+root.configure(bg="#4914cf")  # Light background color
 
 # Title Label
-label = tk.Label(root, text="Face Recognition Attendance", font=("Arial", 16, "bold"), bg="#6641c4", fg="#333")
+label = tk.Label(root, text="Face Recognition Attendance", font=("Arial", 16, "bold"), bg="#4914cf", fg="#333")
 label.pack(pady=15)
 
 # Class Input Field
-class_label = tk.Label(root, text="Enter Class Name:", font=("Arial", 12), bg="#6641c4", fg="black")
+class_label = tk.Label(root, text="Enter Class Name:", font=("Arial", 12), bg="#4914cf", fg="black")
 class_label.pack()
 class_entry = tk.Entry(root, font=("Arial", 12))
 class_entry.pack(pady=5)
 
 # Status Label
-status_label = tk.Label(root, text="", font=("Arial", 12), bg="#6641c4", fg="black")
+status_label = tk.Label(root, text="", font=("Arial", 12), bg="#4914cf", fg="black")
 status_label.pack(pady=10)
 
 # Buttons

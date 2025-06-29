@@ -165,24 +165,24 @@ root.geometry("450x400")
 root.configure(bg="#53bcf5")  # Light background color
 
 # Title Label
-label = tk.Label(root, text="Face Recognition Attendance", font=("Arial", 16, "bold"), bg="#53bcf5", fg="#333")
+label = tk.Label(root, text="Face Recognition Attendance", font=("Arial", 16, "bold"), bg="#6641c4", fg="#333")
 label.pack(pady=15)
 
 # Class Input Field
-class_label = tk.Label(root, text="Enter Class Name:", font=("Arial", 12), bg="#53bcf5", fg="black")
+class_label = tk.Label(root, text="Enter Class Name:", font=("Arial", 12), bg="#6641c4", fg="black")
 class_label.pack()
 class_entry = tk.Entry(root, font=("Arial", 12))
 class_entry.pack(pady=5)
 
 # Status Label
-status_label = tk.Label(root, text="", font=("Arial", 12), bg="#53bcf5", fg="black")
+status_label = tk.Label(root, text="", font=("Arial", 12), bg="#6641c4", fg="black")
 status_label.pack(pady=10)
 
 # Buttons
 update_btn = tk.Button(root, text="Update Face Encodings", command=update_encodings, width=25, height=2, bg="#007bff", fg="white", font=("Arial", 10, "bold"), relief="ridge")
 update_btn.pack(pady=10)
 
-take_attendance_btn = tk.Button(root, text="Take Attendance", command=take_attendance, width=25, height=2, bg="#28a745", fg="white", font=("Arial", 10, "bold"), relief="ridge")
+take_attendance_btn = tk.Button(root, text="Take Attendance", command=take_attendance, width=25, height=2, bg="#112e6b", fg="white", font=("Arial", 10, "bold"), relief="ridge")
 take_attendance_btn.pack(pady=10)
 
 exit_btn = tk.Button(root, text="Exit", command=root.quit, width=25, height=2, bg="#dc3545", fg="white", font=("Arial", 10, "bold"), relief="ridge")
